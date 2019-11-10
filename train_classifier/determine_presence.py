@@ -35,3 +35,4 @@ y_pred = clf.predict(count_vect.transform(X_test))
 print("Accuracy: ", metrics.accuracy_score(y_pred, y_test))
 
 dump(clf, 'presence_classifer.joblib')
+dump(count_vect, 'presence_vectorizer.joblib')

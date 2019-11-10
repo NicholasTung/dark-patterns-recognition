@@ -69,3 +69,4 @@ y_pred = clf.predict(count_vect.transform(X_test))
 print("Accuracy:", metrics.accuracy_score(y_pred, y_test))
 
 dump(clf, 'category_classifier.joblib')
+dump(count_vect, 'category_vectorizer.joblib')
