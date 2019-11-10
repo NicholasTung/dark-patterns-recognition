@@ -57,7 +57,7 @@ function scrape() {
             } 
 
             if (json.result[index] == 'Dark') {
-                highlight(elements[i], "#FE2C47");
+                highlight(elements[i], "#F7E660");
                 count++;
             }
 
