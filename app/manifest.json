@@ -6,7 +6,8 @@
     "description": "Recognize dark patterns in online stores",
     "permissions": [
         "activeTab",
-        "storage"
+        "tabs",
+        "storage",
     ],
 
     "browser_action": {

@@ -8,6 +8,10 @@ window.onload = function() {
             chrome.tabs.sendMessage(tabs[0].id, { message: "analyze_site" });
         });
     };
+
+    (document.getElementsByClassName("link")[0]).onclick = function () {
+        chrome.tabs.create({url: (document.getElementsByClassName("link")[0]).getAttribute('href')});
+    };
  };
 
  chrome.runtime.onMessage.addListener(
