@@ -1,0 +1,29 @@
+html, body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin: 0;
+    min-height: 180;
+    width: 384px;
+    color: #FFFFFF;
+    background-color:#041F30;
+ }
+
+ h1{
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.modal-header{
+    align-items: center;
+    text-align: center;
+    border-bottom: 0.5px solid #dadada;
+}
+
+.modal-content{
+    padding: 0 22px;
+}
+
+.logo{
+    padding: 16px;
+}
