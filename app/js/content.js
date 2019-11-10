@@ -1,34 +1,17 @@
-window.onload = function() {
-    var element = document.getElementById('incite_darkpatterns');
-    if (element) {
-        sendDarkPatterns(element.value);
-    }
-}
-
 function sendDarkPatterns(number) {
     chrome.runtime.sendMessage({
-        message: "darkpatterns",
+        message: "update_current_count",
         count: number
-    });
-}
-
-function addDarkPatternsToMemory(number)
-{
-    chrome.storage.sync.set({'darkpatterns': getDarkPatterns() + number}, function() {
-
-    });
-}
-
-var getDarkPatterns = function()
-{
-    chrome.storage.local.get(['darkpatterns'], function(result) {
-        return result.key;
     });
 }
 
 var server = '127.0.0.1:5000';
 
 function scrape() {
+    if (document.getElementById('insite_count')) {
+        return;            
+    }
+
     var elements = segments(document.body);
 
     var array = [];
@@ -40,11 +23,6 @@ function scrape() {
 
         array.push(elements[i].innerText.trim().replace(/\t/g, " ")); 
     }
-
-    // json to string
-    alert(JSON.stringify({
-        tokens:array
-    }));
 
     // post the array of tokens to the web server (GET requests with fetch cannot have bodies)
     fetch('http://' + server + '/', {
@@ -59,8 +37,6 @@ function scrape() {
         alert("post: " + error);
     });
 
-    alert("POST");
-
     // GET the results from the webserver
     fetch('http://' + server + '/', {
         method: 'GET',
@@ -73,6 +49,7 @@ function scrape() {
         data = data.replace(/'/g, '"');
         json = JSON.parse(data);
 
+        var count = 0;
         var index = 0;
         for (var i = 0; i < elements.length; i++) {
             if (elements[i].innerText.trim() != array[index]) {
@@ -81,6 +58,7 @@ function scrape() {
 
             if (json.result[index] == 'Dark') {
                 highlight(elements[i], "#4BE680");
+                count++;
             }
 
             index++;
@@ -88,12 +66,12 @@ function scrape() {
 
         // store number of dark patterns
         var g = document.createElement('div');
-        g.id = 'incite_darkpatterns';
-        g.value = json.result.length;
+        g.id = 'insite_count';
+        g.value = count;
         g.style.opacity = 0;
         g.style.position = 'fixed';
-        addDarkPatternsToMemory(g.value);
-
+        document.body.appendChild(g);
+        sendDarkPatterns(g.value);
     })
     .catch(function(error) {
         alert("GET" + error);
@@ -115,6 +93,12 @@ chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
         if (request.message == 'analyze_site') {
             scrape();
+        }
+        else if (request.message == 'popup_open') {
+            var element = document.getElementById('insite_count');
+            if (element) {
+                sendDarkPatterns(element.value);
+            }
         }
     }
 );
