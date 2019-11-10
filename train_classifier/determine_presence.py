@@ -5,6 +5,9 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import BernoulliNB
 from sklearn import metrics
 from joblib import dump
+from sklearn.metrics import confusion_matrix
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 df1 = pd.read_csv('normie.csv')
 df2 = pd.read_csv('dark_patterns.csv')
@@ -33,6 +36,14 @@ clf = BernoulliNB().fit(X_train_tfidf, y_train)
 y_pred = clf.predict(count_vect.transform(X_test))
 
 print("Accuracy: ", metrics.accuracy_score(y_pred, y_test))
+
+conf_mat = confusion_matrix(y_test, y_pred)
+fig, ax = plt.subplots(figsize=(10,10))
+sns.heatmap(conf_mat, annot=True, fmt='d',
+            xticklabels=category_id_df.Product.values, yticklabels=category_id_df.Product.values)
+plt.ylabel('Actual')
+plt.xlabel('Predicted')
+plt.show()
 
 dump(clf, 'presence_classifer.joblib')
 dump(count_vect, 'presence_vectorizer.joblib')
