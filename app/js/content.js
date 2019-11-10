@@ -1,4 +1,4 @@
-var server = '127.0.0.1';
+var server = '127.0.0.1:5050';
 
 function scrape() {
     var elements = segments(document.body);
@@ -13,19 +13,27 @@ function scrape() {
         array.push(elements[i].innerText.trim().replace(/\t/g, " ")); 
     }
 
+    // post the array of tokens to the web server (GET requests with fetch cannot have bodies)
+    fetch('http://' + server + '/', {
+        method: 'POST',
+        body: JSON.stringify({
+            tokens: array
+        })
+    }).catch(function (error) {
+        alert(error);
+    });
+
+    // GET the results from the webserver
     fetch('http://' + server + '/', {
         method: 'GET', 
-        body: {
-            tokens: array
-        }
     })
     .then((resp) => resp.json())
     .then(function(data) {
-        
+        alert('test ' + data.length);
     })
     .catch(function() {
-
-    })
+        alert(error);
+    });
 
     copyToClipboard(tokens);
 }
