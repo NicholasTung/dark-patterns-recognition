@@ -4,7 +4,7 @@ function scrape() {
     text = '';
 
     for (i = 0; i < elements.length; i++) {
-        if (elements[i].innerText == '') {
+        if (elements[i].innerText.trim().length == 0) {
             continue;
         }
 
