@@ -7,7 +7,7 @@
     "permissions": [
         "activeTab",
         "tabs",
-        "storage",
+        "storage"
     ],
 
     "browser_action": {
