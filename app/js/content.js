@@ -7,8 +7,8 @@ function scrape() {
         if (elements[i].innerText.trim().length == 0) {
             continue;
         }
-        
-        text += elements[i].innerText.replace(/\t/g, " ") +  '\n'; 
+
+        text += elements[i].innerText.trim().replace(/\t/g, " ") + '\n'; 
     }
 
     copyToClipboard(text);
