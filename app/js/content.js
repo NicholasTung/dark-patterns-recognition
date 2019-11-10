@@ -45,33 +45,32 @@ function scrape() {
         data = data.replace(/'/g, '"');
         json = JSON.parse(data);
 
-        for (var i = 0; i < json.result.length; i++) {
-            if (json.result[i] === 'Dark') {
-                alert(elements[i].innerText);
-                highlight(elements[i], "#FF0000");
+        var index = 0;
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].innerText.trim() != array[index]) {
+                continue;
+            } 
+
+            if (json.result[index] == 'Dark') {
+                //alert(array[i].innerText)
+                highlight(elements[i], "#4BE680");
             }
+
+            index++;
         }
     })
     .catch(function(error) {
         alert("GET" + error);
     });
-
-    copyToClipboard(tokens);
-}
-
-function copyToClipboard(text) {
-    const input = document.createElement('textarea');
-    input.style.position = 'fixed';
-    input.style.opacity = 0;
-    input.value = text;
-    document.body.appendChild(input);
-    input.select();
-    document.execCommand('Copy');
-    document.body.removeChild(input);
 }
 
 function highlight(element, colorCode)
 {
+    if (element == null)
+    {
+        return;
+    }
+
     element.style.boxShadow = '1px 1px 3px rgba(0,0,0,0.3)';
     element.style.background = colorCode;
 }

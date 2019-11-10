@@ -16,13 +16,16 @@ def main():
     if request.method == 'POST':
         data = request.get_json().get('tokens')
 
-        print(data)
-
         for token in data:
             result = presence_classifier.predict(presence_vect.transform([token]))
             output.append(result[0])
 
-        print(output)
+        dark = [data[i] for i in range(len(output)) if output[i] == 'Dark']
+        for d in dark:
+            print(d)
+        print()
+        print(len(dark))
+        print(len([out for out in output if out == 'Dark']))
         return 'OK', 200
     elif request.method == 'GET':
         message = '{ "result": ' + str(output) + ' }'
