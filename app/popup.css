@@ -18,6 +18,21 @@ p {
     font-size: 14px;
 }
 
+button {
+    background-color: #4BE680;
+    border: none;
+    font-size: 16px;
+    padding: 12px 12px;
+    margin: 8px 0px 8px 0px;
+    border-radius: 3px;
+    box-shadow: 4px 4px 2px -2px #1B1B1B;
+    width: 100%;
+}
+
+button:active {
+    background-color: #41C46E;
+}
+
 a:link, a:visited, a:hover, a:active {
     color: #FFFFFF;
     text-decoration: none;
@@ -66,19 +81,4 @@ a:link, a:visited, a:hover, a:active {
 
 .modal-footer a {
     color: #D8D8D8;
-}
-
-.logo{
-    padding: 16px;
-}
-
-.analyze-button {
-    background-color: #4BE680;
-    border: none;
-    font-size: 16px;
-    padding: 12px 12px;
-    margin: 8px 0px 8px 0px;
-    border-radius: 3px;
-    box-shadow: 4px 4px 2px -2px #1B1B1B;
-    width: 100%;
 }

@@ -1,17 +1,33 @@
+var server = '127.0.0.1';
+
 function scrape() {
-    elements = segments(document.body);
+    var elements = segments(document.body);
 
-    text = '';
+    var array = [];
 
-    for (i = 0; i < elements.length; i++) {
+    for (var i = 0; i < elements.length; i++) {
         if (elements[i].innerText.trim().length == 0) {
             continue;
         }
 
-        text += elements[i].innerText.trim().replace(/\t/g, " ") + '\n'; 
+        array.push(elements[i].innerText.trim().replace(/\t/g, " ")); 
     }
 
-    copyToClipboard(text);
+    fetch('http://' + server + '/', {
+        method: 'GET', 
+        body: {
+            tokens: array
+        }
+    })
+    .then((resp) => resp.json())
+    .then(function(data) {
+        
+    })
+    .catch(function() {
+
+    })
+
+    copyToClipboard(tokens);
 }
 
 function copyToClipboard(text) {
