@@ -1,29 +1,84 @@
 html, body {
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 24px;
     margin: 0;
     min-height: 180;
-    width: 384px;
+    width: 296px;
     color: #FFFFFF;
-    background-color:#041F30;
+    background-color: #041F30;
  }
 
- h1{
-    font-size: 24px;
+ h1 {
+    font-size: 36px;
     font-weight: 500;
     margin: 0;
 }
 
-.modal-header{
-    align-items: center;
-    text-align: center;
-    border-bottom: 0.5px solid #dadada;
+p {
+    font-size: 14px;
 }
 
-.modal-content{
-    padding: 0 22px;
+a:link, a:visited, a:hover, a:active {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.modal-header {
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 2px -2px #1B1B1B;
+    background-color: #05283D;
+    padding: 3px;
+}
+
+.modal-content {
+    padding: 0px 16px 0px 16px;
+}
+
+.modal-footer {
+    text-align: center;
+    font-size: 12px;
+    padding: 3px 3px 8px 3px;
+}
+
+.container {
+    background-color: #042538;
+    margin: 8px 0px 8px 0px;
+    padding: 6px;
+    border-radius: 3px;
+    box-shadow: 4px 4px 2px -2px #1B1B1B;
+}
+
+.container p {
+    margin: 0px;
+}
+
+.label {
+    color: #B8B8B8;
+    margin: 0px;
+    font-weight: 150;
+}
+
+.number, .total-number {
+    color: #FFFFFF;
+    font-size: 32px;
+}
+
+.modal-footer a {
+    color: #D8D8D8;
 }
 
 .logo{
     padding: 16px;
+}
+
+.analyze-button {
+    background-color: #4BE680;
+    border: none;
+    font-size: 16px;
+    padding: 12px 12px;
+    margin: 8px 0px 8px 0px;
+    border-radius: 3px;
+    box-shadow: 4px 4px 2px -2px #1B1B1B;
+    width: 100%;
 }
