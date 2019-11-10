@@ -7,21 +7,36 @@ category_classifier = load("category_classifier.joblib")
 category_vect = load("category_vectorizer.joblib")
 
 app = Flask(__name__)
+output = []
 
-
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def main():
-    data = request.get_json().get('tokens')
+    global output 
 
-    output = []
+    if request.method == 'POST':
+        data = request.get_json().get('tokens')
 
-    for token in data:
-        result = presence_classifier.predict(presence_vect.transform([token]))
-        output.append(result)
+        print(data)
 
-    message = {'result': output}
+        for token in data:
+            result = presence_classifier.predict(presence_vect.transform([token]))
+            output.append(result[0])
 
-    return jsonify(message)
+        print(output)
+        return 'OK', 200
+    elif request.method == 'GET':
+        message = '{ "result": ' + str(output) + ' }'
+        print(message)
+
+        #print("message: ")
+        #print(message)
+        json = jsonify(message)
+        #print("json: ")
+        #print(json)
+
+        output = []
+
+        return json
 
 if __name__ == '__main__':
     app.run(threaded=True, debug=True)

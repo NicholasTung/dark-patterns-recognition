@@ -1,4 +1,4 @@
-var server = '127.0.0.1:5050';
+var server = '127.0.0.1:5000';
 
 function scrape() {
     var elements = segments(document.body);
@@ -13,26 +13,47 @@ function scrape() {
         array.push(elements[i].innerText.trim().replace(/\t/g, " ")); 
     }
 
+    // json to string
+    alert(JSON.stringify({
+        tokens:array
+    }));
+
     // post the array of tokens to the web server (GET requests with fetch cannot have bodies)
     fetch('http://' + server + '/', {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
-            tokens: array
+            "tokens": array
         })
     }).catch(function (error) {
-        alert(error);
+        alert("post: " + error);
     });
+
+    alert("POST");
 
     // GET the results from the webserver
     fetch('http://' + server + '/', {
-        method: 'GET', 
+        method: 'GET',
+        headers: {
+            'Content-Type' : 'application/json'
+        }
     })
     .then((resp) => resp.json())
     .then(function(data) {
-        alert('test ' + data.length);
+        data = data.replace(/'/g, '"');
+        json = JSON.parse(data);
+
+        for (var i = 0; i < json.result.length; i++) {
+            if (json.result[i] === 'Dark') {
+                alert(elements[i].innerText);
+                highlight(elements[i], "#FF0000");
+            }
+        }
     })
-    .catch(function() {
-        alert(error);
+    .catch(function(error) {
+        alert("GET" + error);
     });
 
     copyToClipboard(tokens);
