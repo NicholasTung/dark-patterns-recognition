@@ -59,7 +59,7 @@ a:link, a:visited, a:hover, a:active {
 .container {
     background-color: #042538;
     margin: 8px 0px 8px 0px;
-    padding: 6px;
+    padding: 6px 14px 6px 14px;
     border-radius: 3px;
     box-shadow: 4px 4px 2px -2px #1B1B1B;
 }

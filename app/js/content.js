@@ -1,3 +1,31 @@
+window.onload = function() {
+    var element = document.getElementById('incite_darkpatterns');
+    if (element) {
+        sendDarkPatterns(element.value);
+    }
+}
+
+function sendDarkPatterns(number) {
+    chrome.runtime.sendMessage({
+        message: "darkpatterns",
+        count: number
+    });
+}
+
+function addDarkPatternsToMemory(number)
+{
+    chrome.storage.sync.set({'darkpatterns': getDarkPatterns() + number}, function() {
+
+    });
+}
+
+var getDarkPatterns = function()
+{
+    chrome.storage.local.get(['darkpatterns'], function(result) {
+        return result.key;
+    });
+}
+
 var server = '127.0.0.1:5000';
 
 function scrape() {
@@ -52,12 +80,20 @@ function scrape() {
             } 
 
             if (json.result[index] == 'Dark') {
-                //alert(array[i].innerText)
                 highlight(elements[i], "#4BE680");
             }
 
             index++;
         }
+
+        // store number of dark patterns
+        var g = document.createElement('div');
+        g.id = 'incite_darkpatterns';
+        g.value = json.result.length;
+        g.style.opacity = 0;
+        g.style.position = 'fixed';
+        addDarkPatternsToMemory(g.value);
+
     })
     .catch(function(error) {
         alert("GET" + error);
