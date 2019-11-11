@@ -1,5 +1,5 @@
 # dark-patterns-recognition
-WE WON TEENHACKS LI FALL 2019!!!
+[WE WON TEENHACKS LI FALL 2019!!!](https://devpost.com/software/insite-qfpjcd)
 ## Inspiration
 ‘Dark patterns’ have recently taken the marketing world by storm. According to a study done by Princeton University researchers, dark patterns are “computer interfaces that have been crafted to trick users into doing things they didn’t mean to.” tl;dr: Online stores often use dishonest methods to trick honest buyers like us. Insite is here to change that.
 If you’re interested in becoming a savvier online shopper, check out darkpatterns.org. Created by the man who coined the term ‘dark patterns,’ the site will teach you how to recognize the different kinds of dark patterns you may encounter when you shop online.
