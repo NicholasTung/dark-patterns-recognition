@@ -26,4 +26,4 @@ Hour 24 - Laptops down! Our project is complete and we’re excited to show the 
 Since we've never been to a hackathon before, we learned to collaborate as a team and to assign responsibilities to each other. We also learned that when there's a time crunch, sleep quickly becomes a secondary priority.
 
 ## What's next for Insite.
-Insite is and will always be a work in progress. That means we’ll be constantly improving user functionality to ensure that our users stay one step ahead of sellers. We’re open to suggestions, too. Feel free to drop some ideas using this (Google Form)[https://forms.gle/1Ca6hrhEHTxcjkfWA].
+Insite is and will always be a work in progress. That means we’ll be constantly improving user functionality to ensure that our users stay one step ahead of sellers. We’re open to suggestions, too. Feel free to drop some ideas using this [Google Form](https://forms.gle/1Ca6hrhEHTxcjkfWA).
