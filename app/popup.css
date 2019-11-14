@@ -25,7 +25,7 @@ button {
     padding: 12px 12px;
     margin: 8px 0px 8px 0px;
     border-radius: 3px;
-    box-shadow: 4px 4px 2px -2px #1B1B1B;
+    box-shadow: 0 4px 2px -2px #000508;
     width: 100%;
 }
 
@@ -41,7 +41,7 @@ a:link, a:visited, a:hover, a:active {
 .modal-header {
     align-items: center;
     text-align: center;
-    box-shadow: 0 4px 2px -2px #1B1B1B;
+    box-shadow: 0px 4px 2px -2px #000508;
     background-color: #05283D;
     padding: 3px;
 }
@@ -61,7 +61,7 @@ a:link, a:visited, a:hover, a:active {
     margin: 8px 0px 8px 0px;
     padding: 6px 14px 6px 14px;
     border-radius: 3px;
-    box-shadow: 4px 4px 2px -2px #1B1B1B;
+    box-shadow: 0px 4px 2px -2px #000508;
 }
 
 .container p {

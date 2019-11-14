@@ -1,19 +1,17 @@
 from flask import Flask, jsonify, request
 from joblib import load
 
-presence_classifier = load("presence_classifier.joblib")
-presence_vect = load("presence_vectorizer.joblib")
-category_classifier = load("category_classifier.joblib")
-category_vect = load("category_vectorizer.joblib")
+presence_classifier = load('presence_classifier.joblib')
+presence_vect = load('presence_vectorizer.joblib')
+category_classifier = load('category_classifier.joblib')
+category_vect = load('category_vectorizer.joblib')
 
 app = Flask(__name__)
-output = []
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['POST'])
 def main():
-    global output 
-
     if request.method == 'POST':
+        output = []
         data = request.get_json().get('tokens')
 
         for token in data:
@@ -25,19 +23,11 @@ def main():
             print(d)
         print()
         print(len(dark))
-        print(len([out for out in output if out == 'Dark']))
-        return 'OK', 200
-    elif request.method == 'GET':
-        message = '{ "result": ' + str(output) + ' }'
+
+        message = '{ \'result\': ' + str(output) + ' }'
         print(message)
 
-        #print("message: ")
-        #print(message)
         json = jsonify(message)
-        #print("json: ")
-        #print(json)
-
-        output = []
 
         return json
 

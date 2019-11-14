@@ -1,6 +1,6 @@
 function sendDarkPatterns(number) {
     chrome.runtime.sendMessage({
-        message: "update_current_count",
+        message: 'update_current_count',
         count: number
     });
 }
@@ -13,54 +13,37 @@ function scrape() {
     }
 
     var elements = segments(document.body);
-
     var array = [];
 
     for (var i = 0; i < elements.length; i++) {
         if (elements[i].innerText.trim().length == 0) {
             continue;
         }
-
         array.push(elements[i].innerText.trim().replace(/\t/g, " ")); 
     }
-
-    // post the array of tokens to the web server (GET requests with fetch cannot have bodies)
+    
+    // post to the web server
     fetch('http://' + server + '/', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "tokens": array
-        })
-    }).catch(function (error) {
-        alert("post: " + error);
-    });
-
-    // GET the results from the webserver
-    fetch('http://' + server + '/', {
-        method: 'GET',
-        headers: {
-            'Content-Type' : 'application/json'
-        }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ "tokens": array })
     })
-    .then((resp) => resp.json())
+    .then((resp) => resp.json()) // https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
     .then(function(data) {
         data = data.replace(/'/g, '"');
+        alert(data);
         json = JSON.parse(data);
-
         var count = 0;
         var index = 0;
-        for (var i = 0; i < elements.length; i++) {
-            if (elements[i].innerText.trim() != array[index]) {
-                continue;
-            } 
 
+        for (var i = 0; i < elements.length; i++) {
+            if (elements[i].innerText.trim().length == 0) {
+                continue;
+            }
             if (json.result[index] == 'Dark') {
-                highlight(elements[i], "#F7E660");
+                highlight(elements[i], '#F7E660');
                 count++;
             }
-
             index++;
         }
 
@@ -73,18 +56,13 @@ function scrape() {
         document.body.appendChild(g);
         sendDarkPatterns(g.value);
     })
-    .catch(function(error) {
-        alert("GET" + error);
+    .catch(function (error) {
+        alert('POST: ' + error);
     });
 }
 
 function highlight(element, colorCode)
 {
-    if (element == null)
-    {
-        return;
-    }
-
     element.style.boxShadow = '1px 1px 3px rgba(0,0,0,0.3)';
     element.style.background = colorCode;
 }
