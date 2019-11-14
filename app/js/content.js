@@ -31,7 +31,6 @@ function scrape() {
     .then((resp) => resp.json()) // https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
     .then(function(data) {
         data = data.replace(/'/g, '"');
-        alert(data);
         json = JSON.parse(data);
         var count = 0;
         var index = 0;
