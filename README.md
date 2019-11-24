@@ -1,5 +1,19 @@
 # dark-patterns-recognition (insite.)
-[Winner of TeenHacks LI Fall 2019](https://devpost.com/software/insite-qfpjcd)
+[Overall Winner of TeenHacks LI Fall 2019](https://devpost.com/software/insite-qfpjcd)
+
+Insite is a Chrome extension that detects and highlights dark patterns on shopping websites. It reads text on product pages of shopping websites, then identifies and classifies dark pattern text. These suspected dark patterns are highlighted, with a popup that identifies and explains the category that a given dark pattern belongs to. 
+
+This project would have been completely impossible without the paper *Dark Patterns at Scale: Findings from a Crawl of 11K Shopping Websites* (Mathur et al.). We are especially grateful for their dataset of dark pattern strings that was used to train our classifier, and their page segmentation algorithm, which brok down webpages into meaningful blocks of text. Most importantly, the work that they did informed us of the existence of these dark patterns and helped us become more aware of the online landscape, especially when shopping.
+
+## Installation
+To begin installation, first clone this repository, or download and unzip it.
+
+Install the Chrome extension by doing the following:
+1. Navigate to chrome://extensions
+2. Enable "Developer mode" by toggling the switch at the top right of the page
+3. Click the "Load unpacked" button.
+4. Navigate to the repository directory, and select the folder `app` for installation
+5. Ensure that the extension is enabled, and if so, the extension has been successfully installed!
 
 ## Inspiration
 ‘Dark patterns’ have recently taken the marketing world by storm. According to a study done by Princeton University researchers, dark patterns are “computer interfaces that have been crafted to trick users into doing things they didn’t mean to.” tl;dr: Online stores often use dishonest methods to trick honest buyers like us. Insite is here to change that.
@@ -35,3 +49,6 @@ Since we've never been to a hackathon before, we learned to collaborate as a tea
 
 ## What's next for Insite.
 Insite is and will always be a work in progress. That means we’ll be constantly improving user functionality to ensure that our users stay one step ahead of sellers. We’re open to suggestions, too. Feel free to drop some ideas using this [Google Form](https://forms.gle/1Ca6hrhEHTxcjkfWA).
+
+## Reference
+Mathur, A., Acar, G., Friedman, M. J., Lucherini, E., Mayer, J., Chetty, M., & Narayanan, A. (2019). Dark Patterns at Scale: Findings from a Crawl of 11K Shopping Websites. Proceedings of the ACM on Human-Computer Interaction, 3(CSCW), 81.
