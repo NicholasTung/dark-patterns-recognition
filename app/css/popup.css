@@ -6,9 +6,9 @@ html, body {
     width: 296px;
     color: #FFFFFF;
     background-color: #041F30;
- }
+}
 
- h1 {
+h1 {
     font-size: 36px;
     font-weight: 500;
     margin: 0;
@@ -25,8 +25,9 @@ button {
     padding: 12px 12px;
     margin: 8px 0px 8px 0px;
     border-radius: 3px;
-    box-shadow: 0 4px 2px -2px #000508;
+    box-shadow: 0px 3px 2px 1px #00131f;
     width: 100%;
+    transition: background-color 0.2s ease;
 }
 
 button:active {
@@ -41,7 +42,7 @@ a:link, a:visited, a:hover, a:active {
 .modal-header {
     align-items: center;
     text-align: center;
-    box-shadow: 0px 4px 2px -2px #000508;
+    box-shadow: 0px 3px 2px 1px #00131f;
     background-color: #05283D;
     padding: 3px;
 }
@@ -61,7 +62,7 @@ a:link, a:visited, a:hover, a:active {
     margin: 8px 0px 8px 0px;
     padding: 6px 14px 6px 14px;
     border-radius: 3px;
-    box-shadow: 0px 4px 2px -2px #000508;
+    box-shadow: 0px 3px 2px 1px #00131f;
 }
 
 .container p {

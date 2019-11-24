@@ -1,17 +1,22 @@
-function sendDarkPatterns(number) {
-    chrome.runtime.sendMessage({
-        message: 'update_current_count',
-        count: number
-    });
-}
-
-var server = '127.0.0.1:5000';
+const server = '127.0.0.1:5000';
+const descriptions = {
+    'Sneaking': 'Coerces users to act in ways that they would not normally act by obscuring information.',
+    'Urgency': 'Places deadlines on things to make them appear more desirable',
+    'Misdirection': 'Aims to deceptively incline a user towards one choice over the other.',
+    'Social Proof': 'Gives the perception that a given action or product has been approved by other people.',
+    'Scarcity': 'Tries to increase the value of something by making it appear to be limited in availability.',
+    'Obstruction': 'Tries to make an action more difficult so that a user is less likely to do that action.',
+    'Forced Action': 'Forces a user to complete extra, unrelated tasks to do something that should be simple.'
+};
 
 function scrape() {
+    // website has already been analyzed
     if (document.getElementById('insite_count')) {
         return;            
     }
 
+
+    // aggregate all DOM elements on the page
     var elements = segments(document.body);
     var array = [];
 
@@ -19,14 +24,14 @@ function scrape() {
         if (elements[i].innerText.trim().length == 0) {
             continue;
         }
-        array.push(elements[i].innerText.trim().replace(/\t/g, " ")); 
+        array.push(elements[i].innerText.trim().replace(/\t/g, ' ')); 
     }
     
     // post to the web server
     fetch('http://' + server + '/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ "tokens": array })
+        body: JSON.stringify({ 'tokens': array })
     })
     .then((resp) => resp.json()) // https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
     .then(function(data) {
@@ -39,8 +44,8 @@ function scrape() {
             if (elements[i].innerText.trim().length == 0) {
                 continue;
             }
-            if (json.result[index] == 'Dark') {
-                highlight(elements[i], '#F7E660');
+            if (json.result[index] != 'Not Dark') {
+                highlight(elements[i], json.result[index]);
                 count++;
             }
             index++;
@@ -60,10 +65,35 @@ function scrape() {
     });
 }
 
-function highlight(element, colorCode)
+function highlight(element, type)
 {
-    element.style.boxShadow = '1px 1px 3px rgba(0,0,0,0.3)';
-    element.style.background = colorCode;
+    element.classList.add('insite-highlight');
+
+    var body = document.createElement("span");
+    body.classList.add('insite-highlight-body');
+
+    /* header */
+    var header = document.createElement("div");
+    header.classList.add('modal-header');
+    var headerText = document.createElement("h1");
+    headerText.innerHTML = type + ' Pattern';
+    header.appendChild(headerText);
+    body.appendChild(header);
+
+    /* content */
+    var content = document.createElement('div');
+    content.classList.add('modal-content');
+    content.innerHTML = descriptions[type];
+    body.appendChild(content);
+
+    element.appendChild(body);
+}
+
+function sendDarkPatterns(number) {
+    chrome.runtime.sendMessage({
+        message: 'update_current_count',
+        count: number
+    });
 }
 
 chrome.runtime.onMessage.addListener(

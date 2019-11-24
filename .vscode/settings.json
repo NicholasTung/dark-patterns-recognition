@@ -1,5 +1,0 @@
-{
-    "appService.showBuildDuringDeployPrompt": false,
-    "appService.defaultWebAppToDeploy": "/subscriptions/92d5b587-58e3-47e8-903b-8963d68aecd3/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/dark-patterns-recognition",
-    "appService.deploySubpath": "api"
-}

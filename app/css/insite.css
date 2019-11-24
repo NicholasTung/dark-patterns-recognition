@@ -1,0 +1,53 @@
+.insite-highlight {
+    position: relative;
+    background: #F7E660;
+}
+
+.insite-highlight .insite-highlight-body {
+    font-size: 12px;
+    font-weight: 150;
+
+    margin: 0;
+  	width: 200px;
+    color: #FFFFFF;
+    background-color: #041F30;
+
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -100px;
+
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.insite-highlight-body .modal-header {
+    align-items: center;
+    text-align: center;
+    box-shadow: 0px 3px 2px -1px #00131f;
+    background-color: #05283D;
+    padding: 3px;
+}
+
+.insite-highlight-body .modal-header h1 {
+    color: #FFFFFF;
+
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.insite-highlight-body .modal-content {
+    padding: 8px 16px 8px 16px;
+    font-size: 12px;
+    font-weight: 150;
+    color: #D8D8D8;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.insite-highlight:hover .insite-highlight-body {
+	visibility: visible;
+	opacity: 1;
+}
