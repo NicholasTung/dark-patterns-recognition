@@ -3,10 +3,12 @@
 
 Insite is a Chrome extension that detects and highlights dark patterns on shopping websites. It reads text on product pages of shopping websites, then identifies and classifies dark pattern text. These suspected dark patterns are highlighted, with a popup that identifies and explains the category that a given dark pattern belongs to. 
 
-This project would have been completely impossible without the paper *Dark Patterns at Scale: Findings from a Crawl of 11K Shopping Websites* (Mathur et al.). We are especially grateful for their dataset of dark pattern strings that was used to train our classifier, and their page segmentation algorithm, which brok down webpages into meaningful blocks of text. Most importantly, the work that they did informed us of the existence of these dark patterns and helped us become more aware of the online landscape, especially when shopping.
+This project would have been completely impossible without the paper *Dark Patterns at Scale: Findings from a Crawl of 11K Shopping Websites* (Mathur et al.). We are especially grateful for their dataset of dark pattern strings that was used to train our classifier, and their page segmentation algorithm, which broke down webpages into meaningful blocks of text. Most importantly, the work that they did informed us of the existence of these dark patterns and helped us become more aware of the online landscape, especially when shopping.
 
 ## Installation
 To begin installation, first clone this repository, or download and unzip it.
+
+Run the Flask app backend by navigating to `api` and running `app.py` with python
 
 Install the Chrome extension by doing the following:
 1. Navigate to chrome://extensions
