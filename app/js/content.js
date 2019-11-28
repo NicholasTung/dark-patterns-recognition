@@ -1,4 +1,4 @@
-const server = '127.0.0.1:5000';
+const server = 'http://insite.azurewebsites.net/';
 const descriptions = {
     'Sneaking': 'Coerces users to act in ways that they would not normally act by obscuring information.',
     'Urgency': 'Places deadlines on things to make them appear more desirable',
@@ -15,7 +15,6 @@ function scrape() {
         return;            
     }
 
-
     // aggregate all DOM elements on the page
     var elements = segments(document.body);
     var array = [];
@@ -28,7 +27,7 @@ function scrape() {
     }
     
     // post to the web server
-    fetch('http://' + server + '/', {
+    fetch(server, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 'tokens': array })
