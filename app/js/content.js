@@ -1,4 +1,4 @@
-const server = 'http://insite.azurewebsites.net/';
+const server = 'https://insite.azurewebsites.net/';
 const descriptions = {
     'Sneaking': 'Coerces users to act in ways that they would not normally act by obscuring information.',
     'Urgency': 'Places deadlines on things to make them appear more desirable',
